@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 8%;
+    --foreground: 180 100% 95%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 180 100% 95%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 270 70% 50%;
+    --secondary-foreground: 180 100% 95%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 180 40% 65%;
+
+    --accent: 330 80% 55%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+    
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 70% 50%;
+    --neon-pink: 330 80% 55%;
+    
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+    --gradient-bg: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 25% 5%));
+    
+    --shadow-neon: 0 0 20px hsl(var(--neon-cyan) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--neon-cyan) / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 180 100% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+  
+  .neon-glow-strong {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .gradient-neon {
+    background: var(--gradient-neon);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--neon-cyan) / 0.8);
+    }
+  }
+  
+  @keyframes rotate-ring {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes lock-unlock {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    75% {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-rotate-ring {
+    animation: rotate-ring 10s linear infinite;
+  }
+  
+  .animate-lock {
+    animation: lock-unlock 0.5s ease-in-out;
+  }
+}
+
